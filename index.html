@@ -1,113 +1,154 @@
+
 <!doctype html>
 <html lang="fi">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Valppaus — Vapaat ajat täyteen minuuteissa</title>
-  <meta name="description" content="Valppaus täyttää peruutusajat minuuteissa — ilman integraatioita, tulosperusteisesti.">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Peruutusajat rahaksi – ilman integraatioita | Valppaus</title>
+  <meta name="description" content="Täytämme peruutusajat ja vähennämme no-showt. Ei integraatioita. 14 vrk pilotti: 10 täyttöä tai 0 €." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-<div class="container">
-  <nav>
-    <div class="brand"><img src="logo.svg" alt="Valppaus logo"><b>Valppaus</b></div>
-    <div class="navlinks">
-      <a href="index.html">Etusivu</a>
-      <a href="ilmoituslista.html">Ilmoituslista</a>
-      <a href="privacy.html">Tietosuoja</a>
-      <a href="mailto:info@valppaus.fi">Ota yhteyttä</a>
-    </div>
-  </nav>
-</div>
-
-<header class="container">
-  <div class="hero">
-    <div class="badge">Ilman integraatioita • Tulosperusteinen</div>
-    <h1>Valppaus täyttää vapaat ajat minuuteissa</h1>
-    <p class="lead">“10 täytettyä peruutusaikaa 14 päivässä tai 0 €.” Nopea käyttöönotto, SMS‑ilmoitukset, K/E‑vahvistus, raportointi.</p>
-    <div class="cta">
-      <a class="btn" href="mailto:info@valppaus.fi?subject=Valppaus%20—%20Demo">Varaa demo</a>
-      <a class="btn outline" href="join.html?src=valppaus&service=psykoterapia&medium=web">Liity ilmoituslistalle</a>
-    </div>
-    <div class="kpi">
-      <div class="pill">Mediaani‑täyttö ≤ 60 min</div>
-      <div class="pill">No‑show ↓ 50 %</div>
-      <div class="pill">5 min SLA: peruutus → 1. viesti</div>
+  <div class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="Valppaus"><img src="/logo.svg" alt="Valppaus" /></a>
+      <nav class="nav">
+        <a class="cta" href="#cta" onclick="return openContact()">Varaa demo</a>
+      </nav>
     </div>
   </div>
-</header>
 
-<section class="container section features">
-  <h2>Miksi Valppaus</h2>
-  <p class="sub">Tulokset nopeasti ilman IT‑urakkaa. Valppaus muuttaa peruutukset takaisin laskutukseksi.</p>
-  <div class="cards">
-    <div class="card"><h3>Ilman integraatioita</h3><p>Käyttöönotto 1 h. Aloita heti, adapterit vaiheessa 2.</p></div>
-    <div class="card"><h3>Nopeus</h3><p>Peruutus sisään → ilmoitukset ulos minuuteissa. Priorisointi nostaa täyttöä.</p></div>
-    <div class="card"><h3>Varmistus</h3><p>K/E‑vahvistus + 24 h & 3 h muistutukset laskevat no‑show’ta.</p></div>
-    <div class="card"><h3>Raportointi</h3><p>Julkaisut → varaukset → toteutuneet → eurot. Läpinäkyvä dashboard.</p></div>
-  </div>
-</section>
+  <div class="cta-float"><a href="#cta" onclick="return openContact()">Varaa demo</a></div>
 
-<section class="container section">
-  <h2>Näin se toimii</h2>
-  <p class="sub">Suora prosessi, joka ei kuormita henkilökuntaa.</p>
-  <div class="card">
-    <div class="step"><div class="num">1</div><div>Peruutus ilmoitetaan Valppaukseen (lomake/linkki/viesti)</div></div>
-    <div class="step"><div class="num">2</div><div>Valppaus lähettää kohdennetut SMS‑ilmoitukset odotuslistalle</div></div>
-    <div class="step"><div class="num">3</div><div>Ensimmäinen varaa 1‑klikin linkillä — vahvistus *K*</div></div>
-    <div class="step"><div class="num">4</div><div>Muistutukset 24 h & 3 h ennen — no‑show alas</div></div>
-    <div class="step"><div class="num">5</div><div>Raportti: täyttö 60 min/6 h, mediaani, no‑show, eurot</div></div>
-  </div>
-</section>
+  <main>
+    <section class="hero container">
+      <div class="badge">14 vrk pilotti – 10 täyttöä tai 0 €</div>
+      <h1 class="h1">Täytämme peruutusajat. No‑showt alas. <br/>Ei integraatioita.</h1>
+      <p class="sub">Two‑way SMS (K/E) numerosta. Vahvistukset ja muistutukset “VALPPAUS”-lähettäjällä. Kuukausiraportti: täytöt, nopeus, lisämyynti.</p>
+      <div class="hero-cta">
+        <a class="cta" href="#cta" onclick="return openContact()">Varaa demo</a>
+        <a class="btn" href="#pricing">Hinnasto</a>
+        <a class="btn" href="#how">Miten toimii</a>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="label">Täyttö 60 min</div><div class="value">~70 %</div></div>
+        <div class="kpi"><div class="label">Mediaani täyttö</div><div class="value">&lt; 60 min</div></div>
+        <div class="kpi"><div class="label">Lisämyynti / kk</div><div class="value">1 000–2 700 €</div></div>
+      </div>
+    </section>
 
-<section class="container section">
-  <h2>Hinnoittelu</h2>
-  <p class="sub">Riskitön pilotti. Maksatte vain tuloksista.</p>
-  <div class="pricing">
-    <div class="card price">
-      <h3>Pilotti 14 päivää</h3>
-      <div class="amount">0 € jos ei tulosta</div>
-      <p>10 täytettyä aikaa tai 0 €. Vain toteutuneista täytöistä laskutus (12–15 €/fill tai 15–20 %).</p>
-      <a class="btn" href="mailto:info@valppaus.fi?subject=Valppaus%20—%20Pilotti">Aloita pilotti</a>
-    </div>
-    <div class="card price">
-      <h3>Jatko (SMB)</h3>
-      <div class="amount">199 €/kk + tulos</div>
-      <p>Perusmaksu + 12–20 %/täytetty slotti tai 12–15 €/fill. Raportointi ja tuki.</p>
-      <span class="small">Sopimus väh. 3 kk pilotin jälkeen.</span>
-    </div>
-    <div class="card price">
-      <h3>Enterprise</h3>
-      <div class="amount">1 000–3 000 €/kk</div>
-      <p>Useat yksiköt, SLA, integraatiot ja räätälöity raportointi.</p>
-      <a class="btn outline" href="mailto:info@valppaus.fi?subject=Valppaus%20—%20Enterprise">Kysy tarjousta</a>
-    </div>
-  </div>
-</section>
+    <section id="how" class="section container">
+      <h2 class="h2">Näin homma toimii</h2>
+      <div class="cols3">
+        <div class="card">
+          <b>1) Kerätään peruutuslista</b>
+          <p class="mini">QR tiskille + kysymys ajanvarauksessa. Suostumus talteen.</p>
+        </div>
+        <div class="card">
+          <b>2) Peruutus → viesti</b>
+          <p class="mini">Lähetämme K/E‑tekstarin 20–50 asiakkaalle. Nopein voittaa.</p>
+        </div>
+        <div class="card">
+          <b>3) Vahvistus & muistutukset</b>
+          <p class="mini">Vahvistus heti. Muistutukset 24 h ja 3 h ennen. No‑show laskee.</p>
+        </div>
+      </div>
+      <div class="notice"><b>Attribuutio:</b> Valppaus‑fill = K‑vastaus, K‑linkki tai ajanvarauksessa Valppaus‑ID.</div>
+    </section>
 
-<section class="container section">
-  <h2>Yhteensopivuus ja tietosuoja</h2>
-  <p class="sub">Valppaus toimii henkilötietojen käsittelijänä. Minimidata, lokitus ja poistot. Integraatiot vaiheessa 2.</p>
-  <div class="cards">
-    <div class="card"><h3>Suostumus</h3><p>Selkeä viestintäsuostumus. Peru oikeus milloin vain.</p></div>
-    <div class="card"><h3>Turva</h3><p>Salattu siirto/levy, roolipohjainen pääsy, audit‑lokit.</p></div>
-    <div class="card"><h3>Dokumentaatio</h3><p>DPA + alikäsittelijät listattuna. Sähköinen lokitus.</p></div>
-  </div>
-</section>
+    <section id="pricing" class="section container">
+      <h2 class="h2">Hinnasto</h2>
+      <div class="pricing">
+        <div class="plan">
+          <div class="plan-top">
+            <div class="tag">STARTER</div>
+          </div>
+          <div>
+            <div class="price"><div class="num">199 €</div><div class="sub">/ kk</div></div>
+            <div class="mini">+ 12 € / täyttö</div>
+            <ul class="ul">
+              <li>Pilotti: 10 täyttöä / 14 vrk tai 0 €</li>
+              <li>Kuukausiraportti & toimenpiteet</li>
+              <li><b>Rajat:</b> max 60 tarjousta/kk, batch max 30</li>
+            </ul>
+          </div>
+          <a class="cta-plan" href="#cta" onclick="return openContact()">Varaa demo</a>
+        </div>
 
-<section class="container section">
-  <div class="card" style="text-align:center">
-    <h3>Valmiina täyttämään peruutusajat?</h3>
-    <p>Tee pilotti. Näytä numerot. Jatka jos toimii.</p>
-    <div class="cta">
-      <a class="btn" href="mailto:info@valppaus.fi?subject=Valppaus%20—%20Demo">Varaa demo</a>
-      <a class="btn outline" href="join.html?src=valppaus&service=psykoterapia&medium=web">Liity ilmoituslistalle</a>
-    </div>
-  </div>
-</section>
-<footer>
-  © 2025 Valppaus • <a href="mailto:info@valppaus.fi">info@valppaus.fi</a> • <a href="terms.html">Ehdot</a> • <a href="privacy.html">Tietosuoja</a>
-</footer>
+        <div class="plan highlight">
+          <div class="plan-top">
+            <div class="tag">PRO</div>
+            <div class="tag">Suosituin</div>
+          </div>
+          <div>
+            <div class="price"><div class="num">399 €</div><div class="sub">/ kk</div></div>
+            <div class="mini">+ 20 € / täyttö</div>
+            <ul class="ul">
+              <li>Rajaton kapasiteetti, SLA &lt; 5 min</li>
+              <li>“VALPPAUS”‑lähettäjä</li>
+              <li>Laajennetut raportit</li>
+            </ul>
+          </div>
+          <a class="cta-plan" href="#cta" onclick="return openContact()">Varaa demo</a>
+        </div>
+
+        <div class="plan">
+          <div class="plan-top">
+            <div class="tag">PAY‑PER‑FILL</div>
+          </div>
+          <div>
+            <div class="price"><div class="num">0 €</div><div class="sub">/ kk</div></div>
+            <div class="mini">+ 30 € / täyttö • cap 699 €</div>
+            <ul class="ul">
+              <li>Ei kiinteitä – maksat vain tuloksesta</li>
+              <li>Rajattu kapasiteetti</li>
+            </ul>
+          </div>
+          <a class="cta-plan" href="#cta" onclick="return openContact()">Varaa demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="cta">
+      <h2 class="h2">Varaa 15 min demo</h2>
+      <div class="card">
+        <p class="mini">Lähetä vapaamuotoinen viesti. Vastaan 24 h sisällä.</p>
+        <div class="hero-cta">
+          <a class="cta" href="#" onclick="return openContact()">Avaa sähköposti</a>
+          <a class="btn" href="tel:+358000000000">Soita</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="h2">Usein kysyttyä</h2>
+      <div class="faq">
+        <div class="qa">
+          <b>Tarvitaanko integraatioita?</b>
+          <div class="mini">Ei. Viestintä + tunniste (offer_id) riittää. Integraatiot lisäpalveluna.</div>
+        </div>
+        <div class="qa">
+          <b>Entä GDPR?</b>
+          <div class="mini">Keräämme vain viestintätiedot ja suostumuksen. Ei terveystietoja. <a class="link" href="/privacy.html">Lue lisää</a>.</div>
+        </div>
+        <div class="qa">
+          <b>Paljonko tämä tuottaa?</b>
+          <div class="mini">Tyypillinen lisämyynti 1 000–2 700 € / kk per toimipiste, riippuen peruutusvolyymista.</div>
+        </div>
+        <div class="qa">
+          <b>Voiko irtisanoa koska vain?</b>
+          <div class="mini">Kyllä. Kuukauden lopussa.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <div>© Valppaus • <a class="link" href="/privacy.html">GDPR</a> • <a class="link" href="/stop.html">Poistu listalta</a></div>
+    <div><a class="btn" href="#cta" onclick="return openContact()">Varaa demo</a></div>
+  </footer>
+
+  <script src="/main.js"></script>
 </body>
 </html>
