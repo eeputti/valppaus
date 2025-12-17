@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="44" viewBox="0 0 260 44" aria-label="Valppaus logo" role="img">
+  <g transform="translate(6,8)">
+    <path d="M6 16l6 6L24 10" fill="none" stroke="#5AA0FF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(44,32)">
+    <text font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="28" font-weight="1000" fill="#5AA0FF" stroke="#5AA0FF" stroke-width="1.2" letter-spacing="-1">VALPPAUS</text>
+  </g>
+</svg>
