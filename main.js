@@ -50,17 +50,3 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-/* Mobiili: lisää hieman tilaa + iOS-notch tuki */
-@media (max-width: 600px){
-  .container{
-    padding-left: calc(var(--gutter-mobile) + env(safe-area-inset-left, 0));
-    padding-right: calc(var(--gutter-mobile) + env(safe-area-inset-right, 0));
-  }
-  /* vähän lisähappea elementtien sisään pienillä näytöillä */
-  .tile, .card, .plan, .qa { padding-left: 16px; padding-right: 16px; }
-  /* ruudukon tiivistys ettei ahdista */
-  .tiles5, .tiles4, .steps5, .steps3, .pricing, .faq { gap: 12px; }
-}
-
-/* Poistaa headerin "Varaa demo" -napin varjon */
-.header .nav .cta.primary { box-shadow: none !important; }
