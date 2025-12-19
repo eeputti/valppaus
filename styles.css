@@ -124,3 +124,6 @@ a.link{color:var(--ink);font-weight:900;text-decoration:underline}
   /* ruudukon tiivistys ettei ahdista */
   .tiles5, .tiles4, .steps5, .steps3, .pricing, .faq { gap: 12px; }
 }
+
+/* Poistaa headerin "Varaa demo" -napin varjon */
+.header .nav .cta.primary { box-shadow: none !important; }
