@@ -45,11 +45,25 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:I
 .card{border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
 .mini{font-size:14px;color:var(--muted)}
 
-/* Why tiles (no CTAs inside) */
-.tiles4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px}
-.tile{border:2px solid var(--ink);border-radius:0;padding:16px;display:flex;flex-direction:column;gap:6px;min-height:140px;box-shadow:none}
-.tile b{font-size:16px}
-.tile p{margin:0;font-size:14px;color:var(--muted)}
+/* 5 laattaa rivissä */
+.tiles5{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  margin-top:12px;
+}
+
+/* Pyöristetyt kulmat vain tässä osiossa */
+#why .tile{
+  border-radius:12px;           /* ylittää aiemman border-radius:0 */
+}
+
+/* Responsiivisuus */
+@media (max-width:1200px){ .tiles5{ grid-template-columns:repeat(3,1fr) } }
+@media (max-width:780px){  .tiles5{ grid-template-columns:repeat(2,1fr) } }
+@media (max-width:520px){  .tiles5{ grid-template-columns:1fr } }
+
+#why .tile{ box-shadow: var(--shadow); }
 
 /* Pricing */
 .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
