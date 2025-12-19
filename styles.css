@@ -63,8 +63,6 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:I
 @media (max-width:780px){  .tiles5{ grid-template-columns:repeat(2,1fr) } }
 @media (max-width:520px){  .tiles5{ grid-template-columns:1fr } }
 
-#why .tile{ box-shadow: var(--shadow); }
-
 /* Pricing */
 .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .plan{border:2px solid var(--line);border-radius:18px;background:#fff;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);aspect-ratio:1/1;justify-content:space-between}
@@ -99,6 +97,6 @@ button.primary:hover{filter:brightness(.95)}
 a.link{color:var(--ink);font-weight:900;text-decoration:underline}
 
 /* Responsive */
-@media (max-width:1100px){ .tiles4{grid-template-columns:1fr 1fr} }
-@media (max-width:720px){ .tiles4{grid-template-columns:1fr} }
+@media (max-width:1100px){ .tiles5{grid-template-columns:1fr 1fr} }
+@media (max-width:720px){ .tiles5{grid-template-columns:1fr} }
 @media (max-width:980px){ .pricing,.faq{grid-template-columns:1fr} .plan{aspect-ratio:auto;min-height:420px} .h1{font-size:36px} }
