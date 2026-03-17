@@ -355,55 +355,50 @@ a.link{color:var(--ink);font-weight:900;text-decoration:underline}
       <section class="border-b border-slate-200 bg-slate-50">
         <div class="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8">
           <h2 class="text-3xl font-bold tracking-tight">Demo-dashboard</h2>
-          <p class="mt-3 max-w-3xl text-slate-600">Selkeä näkymä kertoo yhdellä silmäyksellä, mitä vapaille ajoille tapahtuu ja kuinka paljon liikevaihtoa on palautettu.</p>
+          <p class="mt-3 max-w-3xl text-slate-600">Näkymä näyttää aidon työvuoron tilanteen: vapaat ajat, kenelle viesti lähtee ja mitä seuraavaksi tapahtuu.</p>
           <div class="mt-10 rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-            <div class="grid gap-4 md:grid-cols-5">
+            <div class="grid gap-4 md:grid-cols-4">
               <div class="rounded-2xl bg-brand-50 p-4">
-                <p class="text-xs text-slate-500">Vapaat ajat</p>
-                <p class="mt-2 text-2xl font-bold">6</p>
+                <p class="text-xs text-slate-500">Vapaat ajat tänään</p>
+                <p class="mt-2 text-2xl font-bold">3</p>
               </div>
               <div class="rounded-2xl bg-slate-50 p-4">
-                <p class="text-xs text-slate-500">Lähetetyt viestit</p>
-                <p class="mt-2 text-2xl font-bold">42</p>
+                <p class="text-xs text-slate-500">Viestejä lähetetty</p>
+                <p class="mt-2 text-2xl font-bold">18</p>
               </div>
               <div class="rounded-2xl bg-slate-50 p-4">
-                <p class="text-xs text-slate-500">Vastaukset</p>
-                <p class="mt-2 text-2xl font-bold">14</p>
-              </div>
-              <div class="rounded-2xl bg-slate-50 p-4">
-                <p class="text-xs text-slate-500">Täytetyt ajat</p>
-                <p class="mt-2 text-2xl font-bold">5</p>
+                <p class="text-xs text-slate-500">Vastauksia</p>
+                <p class="mt-2 text-2xl font-bold">1</p>
               </div>
               <div class="rounded-2xl bg-emerald-50 p-4">
-                <p class="text-xs text-slate-500">Palautunut liikevaihto</p>
-                <p class="mt-2 text-2xl font-bold text-emerald-700">1 040 €</p>
+                <p class="text-xs text-slate-500">Täytetyt ajat</p>
+                <p class="mt-2 text-2xl font-bold text-emerald-700">1</p>
               </div>
             </div>
-            <div class="mt-6 overflow-hidden rounded-2xl border border-slate-200">
-              <table class="min-w-full divide-y divide-slate-200 text-sm">
-                <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
-                  <tr>
-                    <th class="px-4 py-3">Vapaa aika</th>
-                    <th class="px-4 py-3">Kohderyhmä</th>
-                    <th class="px-4 py-3">Tilanne</th>
-                    <th class="px-4 py-3">Toimenpide</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100 bg-white">
-                  <tr>
-                    <td class="px-4 py-3">Ti 13:00 / Fysioterapia</td>
-                    <td class="px-4 py-3">Selkäkipuasiakkaat 10 km</td>
-                    <td class="px-4 py-3"><span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">2 vastausta</span></td>
-                    <td class="px-4 py-3"><button class="rounded-full bg-brand-500 px-4 py-1.5 text-xs font-semibold text-white">Vahvista</button></td>
-                  </tr>
-                  <tr>
-                    <td class="px-4 py-3">Ke 09:30 / Hieronta</td>
-                    <td class="px-4 py-3">Aiemmin käyneet asiakkaat</td>
-                    <td class="px-4 py-3"><span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">Täytetty</span></td>
-                    <td class="px-4 py-3 text-slate-400">—</td>
-                  </tr>
-                </tbody>
-              </table>
+
+            <div class="mt-6 grid gap-6 lg:grid-cols-[1.3fr_1fr]">
+              <div>
+                <h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500">Vapaat ajat</h3>
+                <div id="slot-list" class="space-y-3"></div>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Valittu aika</h3>
+                <div class="mt-4 space-y-3 text-sm">
+                  <p><span class="font-semibold text-slate-500">Aika:</span> <span id="selected-time" class="font-semibold text-slate-900"></span></p>
+                  <p><span class="font-semibold text-slate-500">Palvelu:</span> <span id="selected-service" class="font-semibold text-slate-900"></span></p>
+                  <p><span class="font-semibold text-slate-500">Tekijä:</span> <span id="selected-practitioner" class="font-semibold text-slate-900"></span></p>
+                  <p><span class="font-semibold text-slate-500">Kenelle viesti lähtee:</span> <span id="selected-recipients" class="font-semibold text-slate-900"></span></p>
+                </div>
+                <div class="mt-4 rounded-xl border border-slate-200 bg-white p-4 text-sm">
+                  <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">SMS preview</p>
+                  <p id="selected-sms" class="leading-relaxed text-slate-700"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-4">
+              <h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500">Activity feed</h3>
+              <ul id="activity-feed" class="space-y-2 text-sm"></ul>
             </div>
           </div>
         </div>
@@ -441,4 +436,78 @@ a.link{color:var(--ink);font-weight:900;text-decoration:underline}
       </div>
     </footer>
   </body>
+  <script>
+    const dashboardSlots = [
+      {
+        time: '10:30',
+        service: 'Fysioterapia 60 min',
+        practitioner: 'Laura Mäkinen',
+        recipients: '18 asiakasta',
+        status: 'viesti lähetetty',
+        sms: 'Hei! Vapautui fysioterapia 60 min tänään klo 10:30 (Laura Mäkinen). Vastaa KYLLÄ, jos haluat ajan.',
+        activity: ['10:02 Viesti lähetetty 18 asiakkaalle', '10:04 Asiakas vastasi KYLLÄ: anna virtanen', '10:05 Aika vahvistettu asiakkaalle anna virtanen']
+      },
+      {
+        time: '13:00',
+        service: 'Hieronta 45 min',
+        practitioner: 'Sami Lehtinen',
+        recipients: '12 asiakasta',
+        status: 'avoin',
+        sms: 'Hei! Vapautui hieronta 45 min tänään klo 13:00 (Sami Lehtinen). Vastaa KYLLÄ, jos haluat ajan.',
+        activity: ['11:40 Aika avattu listalle', '11:41 Kohderyhmä rajattu: viime 6 kk hieronta-asiakkaat', '11:42 Lähetys odottaa hyväksyntää']
+      },
+      {
+        time: '15:30',
+        service: 'Fysioterapia 60 min',
+        practitioner: 'Iida Niemi',
+        recipients: '9 asiakasta',
+        status: 'täytetty',
+        sms: 'Hei! Vapautui fysioterapia 60 min tänään klo 15:30 (Iida Niemi). Vastaa KYLLÄ, jos haluat ajan.',
+        activity: ['13:10 Viesti lähetetty 9 asiakkaalle', '13:15 Asiakas vastasi KYLLÄ: laura mäkinen', '13:16 Aika vahvistettu asiakkaalle laura mäkinen']
+      }
+    ];
+
+    const statusStyles = {
+      avoin: 'bg-slate-100 text-slate-700',
+      'viesti lähetetty': 'bg-amber-100 text-amber-700',
+      täytetty: 'bg-emerald-100 text-emerald-700'
+    };
+
+    function renderDashboard(selectedIndex = 0) {
+      const list = document.getElementById('slot-list');
+      const feed = document.getElementById('activity-feed');
+      if (!list || !feed) return;
+
+      list.innerHTML = dashboardSlots
+        .map((slot, index) => {
+          const isSelected = index === selectedIndex;
+          return `<button class="w-full rounded-2xl border p-4 text-left transition ${isSelected ? 'border-brand-500 bg-brand-50' : 'border-slate-200 bg-white hover:border-brand-200'}" data-slot-index="${index}">
+              <div class="grid gap-3 sm:grid-cols-4 sm:items-center">
+                <p class="text-sm font-semibold text-slate-900">${slot.time}</p>
+                <p class="text-sm text-slate-700">${slot.service}</p>
+                <p class="text-sm text-slate-700">${slot.practitioner}</p>
+                <span class="inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold ${statusStyles[slot.status]}">${slot.status}</span>
+              </div>
+            </button>`;
+        })
+        .join('');
+
+      const selected = dashboardSlots[selectedIndex];
+      document.getElementById('selected-time').textContent = selected.time;
+      document.getElementById('selected-service').textContent = selected.service;
+      document.getElementById('selected-practitioner').textContent = selected.practitioner;
+      document.getElementById('selected-recipients').textContent = selected.recipients;
+      document.getElementById('selected-sms').textContent = selected.sms;
+
+      feed.innerHTML = selected.activity
+        .map((event) => `<li class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">${event}</li>`)
+        .join('');
+
+      document.querySelectorAll('[data-slot-index]').forEach((button) => {
+        button.addEventListener('click', () => renderDashboard(Number(button.dataset.slotIndex)));
+      });
+    }
+
+    renderDashboard();
+  </script>
 </html>
