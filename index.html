@@ -3,11 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Valppaus | Täytä peruutusajat automaattisesti tekstiviestillä</title>
-    <meta
-      name="description"
-      content="Valppaus auttaa klinikoita täyttämään viime hetken peruutukset automaattisesti tekstiviesteillä."
-    />
+    <title>Valppaus | Klinikan dashboard</title>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -104,6 +100,7 @@
             </div>
             <p class="rounded-2xl border border-emerald-100 bg-emerald-50/70 p-4 text-sm text-emerald-900">Slotti täyttyi klo 13:27. Henkilökunta vahvisti yhdellä klikkauksella.</p>
           </div>
+          <p id="dateLabel" class="rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700"></p>
         </div>
       </section>
 
@@ -138,8 +135,6 @@
               <p class="mt-2 text-sm text-slate-600">Henkilökunta hyväksyy ja slotti täyttyy.</p>
             </article>
           </div>
-        </div>
-      </section>
 
       <section id="demo" class="mx-auto max-w-6xl px-6 py-16 lg:px-8">
         <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
@@ -195,11 +190,9 @@
               </div>
             </div>
 
-            <div class="mt-5 rounded-2xl border border-slate-200">
-              <div class="border-b border-slate-200 px-4 py-3 text-sm font-semibold">Tapahtumaloki</div>
-              <ul id="log" class="space-y-2 p-4 text-sm text-slate-600">
-                <li>• Demo valmis. Klikkaa "1. Lisää slotti".</li>
-              </ul>
+            <div class="mt-5 rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-emerald-700">responses</p>
+              <p class="mt-2 text-sm"><span class="font-semibold">anna virtanen</span> → <span class="font-bold text-emerald-700">KYLLÄ</span> (10:18)</p>
             </div>
 
             <div class="mt-5 rounded-2xl border border-brand-200 bg-brand-50 p-4 text-sm text-brand-900">
@@ -267,60 +260,15 @@
     </footer>
 
     <script>
-      const state = { step: 0, sms: 0, yes: 0 };
-      const log = document.getElementById("log");
-      const statusEl = document.getElementById("status");
-      const smsCountEl = document.getElementById("smsCount");
-      const yesCountEl = document.getElementById("yesCount");
-      const buttons = Array.from(document.querySelectorAll(".demo-step"));
-
-      function addLog(text) {
-        const item = document.createElement("li");
-        item.textContent = `• ${text}`;
-        log.appendChild(item);
-      }
-
-      function refreshMessageTokens() {
-        document.getElementById("smsService").textContent = document.getElementById("service").value;
-        document.getElementById("smsTime").textContent = document.getElementById("time").value.replace("Tänään ", "");
-        document.getElementById("smsLocation").textContent = document.getElementById("location").value;
-      }
-
-      function updateUI() {
-        smsCountEl.textContent = state.sms;
-        yesCountEl.textContent = state.yes;
-      }
-
-      function runStep(step) {
-        refreshMessageTokens();
-
-        if (step === 1) {
-          state.step = 1;
-          statusEl.textContent = "Avoin slotti lisätty";
-          addLog(`Henkilökunta lisäsi slotin: ${document.getElementById("service").value}, ${document.getElementById("time").value}.`);
-        }
-
-        if (step === 2 && state.step >= 1) {
-          state.step = 2;
-          state.sms = 22;
-          statusEl.textContent = "SMS-kampanja käynnissä";
-          addLog("Valppaus lähetti 22 tekstiviestiä valituille potilaille.");
-        }
-
-        if (step === 3 && state.step >= 2) {
-          state.step = 3;
-          state.yes = 3;
-          statusEl.textContent = "YES-vastauksia vastaanotettu";
-          addLog("Ensimmäinen YES-vastaus tuli 2 minuutissa.");
-        }
-
-        if (step === 4 && state.step >= 3) {
-          state.step = 4;
-          statusEl.textContent = "Varaus vahvistettu";
-          addLog("Henkilökunta vahvisti varauksen. Peruutusaika täytetty.");
-        }
-
-        updateUI();
+      const dateLabel = document.getElementById('dateLabel');
+      if (dateLabel) {
+        const now = new Date();
+        dateLabel.textContent = now.toLocaleDateString('fi-FI', {
+          weekday: 'long',
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
       }
 
       buttons.forEach((button) => {
