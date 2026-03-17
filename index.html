@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Valppaus | Täytä peruutusajat nopeasti ilman soittorallia</title>
+    <title>Valppaus | Täytä peruutusajat automaattisesti tekstiviestillä</title>
+    <meta
+      name="description"
+      content="Valppaus auttaa klinikoita täyttämään viime hetken peruutukset automaattisesti tekstiviesteillä."
+    />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,24 +16,17 @@
           extend: {
             colors: {
               brand: {
-                50: '#eef6ff',
-                100: '#d9eafe',
-                500: '#3f7edb',
-                600: '#2f69c2',
-                700: '#2355a2'
+                50: "#f3f7ff",
+                100: "#e9f0ff",
+                200: "#cedfff",
+                500: "#5177c2",
+                600: "#4466aa",
+                700: "#39548d",
+                900: "#24334f"
               }
             },
             boxShadow: {
-              soft: '0 12px 40px rgba(15, 23, 42, 0.08)'
-            },
-            keyframes: {
-              fadeUp: {
-                '0%': { opacity: '0', transform: 'translateY(12px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' }
-              }
-            },
-            animation: {
-              fadeUp: 'fadeUp 0.6s ease-out both'
+              soft: "0 10px 30px rgba(15, 23, 42, 0.08)"
             }
           }
         }
@@ -38,267 +35,324 @@
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased">
     <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur">
-      <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
-        <div class="flex items-center gap-3">
-          <img src="./logo.svg" alt="Valppaus" class="h-8 w-auto" />
-          <span class="text-sm font-semibold tracking-wide text-slate-600">Suomalaisille klinikoille</span>
-        </div>
-        <a href="#demo" class="rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-600 hover:shadow-soft">Varaa 30 min demo</a>
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+        <a href="#" class="flex items-center gap-3">
+          <img src="./logo.svg" alt="Valppaus" class="h-9 w-auto" />
+          <span class="text-xs font-semibold tracking-wide text-slate-500">Klinikoille</span>
+        </a>
+        <nav class="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
+          <a href="#miten" class="transition hover:text-slate-900">Miten toimii</a>
+          <a href="#demo" class="transition hover:text-slate-900">Tuotedemo</a>
+          <a href="#hyodyt" class="transition hover:text-slate-900">Hyödyt</a>
+          <a href="#hinnoittelu" class="transition hover:text-slate-900">Hinnoittelu</a>
+        </nav>
+        <a
+          href="mailto:info@valppaus.fi?subject=Varaa%20demo%20-%20Valppaus"
+          class="rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:bg-brand-700"
+          >Varaa demo</a
+        >
       </div>
     </header>
 
     <main>
-      <section class="relative overflow-hidden border-b border-slate-200 bg-white">
-        <div class="absolute inset-x-0 -top-20 mx-auto h-64 w-64 rounded-full bg-brand-100 blur-3xl"></div>
-        <div class="relative mx-auto grid w-full max-w-6xl gap-12 px-6 py-20 lg:grid-cols-2 lg:items-center lg:px-8">
-          <div class="space-y-6 animate-fadeUp">
-            <span class="inline-flex rounded-full bg-brand-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-700">Kun klo 10:15 tulee peruutus, täytätte ajan ennen lounasta</span>
-            <h1 class="text-4xl font-bold leading-tight tracking-tight text-slate-900 md:text-5xl">Täytä peruutusajat minuuteissa, ilman että ehditte soitella kenellekään.</h1>
-            <p class="max-w-xl text-lg text-slate-600">Käytännössä: yksi vapaa aika sisään, tekstiviestit ulos ja seuraava asiakas varmistuu nopeasti. Yksi aika voi olla noin 60 €, joten jokainen täytetty rako näkyy heti kassassa.</p>
-            <p class="max-w-xl rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-base font-bold text-emerald-800">yksi täytetty aika voi kattaa koko kuukauden hinnan</p>
-            <div class="flex flex-wrap gap-3">
-              <a href="#demo" class="rounded-full bg-brand-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-600 hover:shadow-soft">Varaa demo</a>
-              <a href="#miten" class="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-brand-500 hover:text-brand-700">Katso 4 vaiheen esimerkki</a>
-            </div>
+      <section class="mx-auto grid max-w-6xl gap-12 px-6 pb-20 pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8 lg:pt-20">
+        <div>
+          <p class="mb-5 inline-flex rounded-full bg-brand-100 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-brand-700">
+            Valppaus · Peruutusaikojen täyttö
+          </p>
+          <h1 class="text-4xl font-semibold leading-tight text-slate-950 sm:text-5xl">
+            Täytä peruutusajat nopeasti – ilman ylimääräistä säätöä.
+          </h1>
+          <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
+            Valppaus on klinikoille tehty työkalu, joka lähettää automaattisesti tekstiviestin oikeille potilaille, kun vastaanottoon vapautuu aika.
+            Ei ajanvarausjärjestelmä. Ei markkinapaikka. Vain tehokas tapa täyttää tyhjät slotit.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a
+              href="mailto:info@valppaus.fi?subject=Demo%20pyynt%C3%B6%20-%20Valppaus"
+              class="rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-brand-700"
+              >Varaa 20 min demo</a
+            >
+            <a href="#demo" class="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400">
+              Katso tuotedemo
+            </a>
           </div>
-          <div class="animate-fadeUp rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-            <p class="mb-4 text-sm font-semibold text-slate-500">Esimerkki oikeasta arjesta (7 minuuttia)</p>
-            <ol class="space-y-3 text-sm">
-              <li class="rounded-2xl bg-slate-50 p-4"><span class="font-semibold text-brand-700">10:15</span> Asiakas peruu klo 13:00 fysioterapia-ajan.</li>
-              <li class="rounded-2xl bg-slate-50 p-4"><span class="font-semibold text-brand-700">10:16</span> Vastaanotto lisää vapaan ajan Valppaukseen.</li>
-              <li class="rounded-2xl bg-slate-50 p-4"><span class="font-semibold text-brand-700">10:17</span> Valppaus lähettää tekstiviestin niille, joille klo 13:00 oikeasti sopii.</li>
-              <li class="rounded-2xl bg-slate-50 p-4"><span class="font-semibold text-brand-700">10:22</span> Asiakas vastaa "tulen" ja aika vahvistetaan. Tyhjä 60 € slotti pelastettu.</li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      <section class="border-b border-slate-200 bg-slate-50">
-        <div class="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8">
-          <div class="max-w-3xl space-y-4">
-            <h2 class="text-3xl font-bold tracking-tight">Missä raha karkaa arjessa?</h2>
-            <p class="text-slate-600">Peruutus tulee usein samana päivänä. Silloin vastaanotossa ei ehditä soitella asiakkaita läpi, koska ovella on jo seuraava tulossa. Lopputulos: hyvä aika jää tyhjäksi ja päivän myynti laskee heti.</p>
-          </div>
-          <div class="mt-10 grid gap-4 md:grid-cols-3">
-            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
-              <p class="text-sm font-semibold text-slate-500">Arjen kipu 1</p>
-              <p class="mt-2 font-semibold">Yksi tyhjä 60 € aika on pois päivän kassasta</p>
+          <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+              <p class="text-2xl font-semibold">&lt; 10 min</p>
+              <p class="mt-1 text-sm text-slate-500">keskimäärin peruutusajan täyttöön</p>
             </div>
-            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
-              <p class="text-sm font-semibold text-slate-500">Arjen kipu 2</p>
-              <p class="mt-2 font-semibold">Soittokierros vie ajan asiakkaalta, joka on jo hoitohuoneessa</p>
+            <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+              <p class="text-2xl font-semibold">100 %</p>
+              <p class="mt-1 text-sm text-slate-500">SMS-pohjainen, ei appia potilaalle</p>
             </div>
-            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
-              <p class="text-sm font-semibold text-slate-500">Arjen kipu 3</p>
-              <p class="mt-2 font-semibold">Vapaat ajat eivät tavoita niitä, jotka voisivat tulla heti</p>
+            <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+              <p class="text-2xl font-semibold">1 näkymä</p>
+              <p class="mt-1 text-sm text-slate-500">henkilökunnalle: lisää slotti ja vahvista</p>
             </div>
           </div>
         </div>
-      </section>
 
-      <section class="border-b border-slate-200 bg-white">
-        <div class="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8">
-          <h2 class="text-3xl font-bold tracking-tight">Mitä henkilökunta tekee käytännössä?</h2>
-          <div class="mt-10 grid gap-6 md:grid-cols-3">
-            <div class="group rounded-3xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-1 hover:border-brand-300">
-              <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-500 text-sm font-bold text-white">1</div>
-              <h3 class="text-lg font-semibold">Lisää vapaa aika</h3>
-              <p class="mt-2 text-sm text-slate-600">Kun peruutus tulee, vapaa aika syötetään palveluun noin 20 sekunnissa.</p>
+        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+          <p class="text-sm font-semibold text-slate-500">Esimerkki: Fysioklinikka, keskiviikko 13:20</p>
+          <div class="mt-5 space-y-4">
+            <div class="rounded-2xl bg-slate-50 p-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Tilanne</p>
+              <p class="mt-2 text-sm text-slate-700">Asiakas peruu ajan klo 15:00. Yksi 45 min slot vapautuu.</p>
             </div>
-            <div class="group rounded-3xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-1 hover:border-brand-300">
-              <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-500 text-sm font-bold text-white">2</div>
-              <h3 class="text-lg font-semibold">Viestit lähtevät heti</h3>
-              <p class="mt-2 text-sm text-slate-600">Valppaus lähettää tekstiviestin sopivalle asiakasjoukolle automaattisesti.</p>
-            </div>
-            <div class="group rounded-3xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-1 hover:border-brand-300">
-              <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-500 text-sm font-bold text-white">3</div>
-              <h3 class="text-lg font-semibold">Vahvista yhdellä painalluksella</h3>
-              <p class="mt-2 text-sm text-slate-600">Ensimmäinen sopiva vastaus hyväksytään ja aika on takaisin kalenterissa.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="border-b border-slate-200 bg-slate-50">
-        <div class="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8">
-          <h2 class="text-3xl font-bold tracking-tight">Miksi klinikat ottavat Valppauksen käyttöön?</h2>
-          <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            <div class="rounded-2xl border border-slate-200 bg-white p-5 text-sm font-medium shadow-soft">Peruutusajat täyttyvät nopeammin</div>
-            <div class="rounded-2xl border border-slate-200 bg-white p-5 text-sm font-medium shadow-soft">Päivän myynti ei putoa yhden peruutuksen takia</div>
-            <div class="rounded-2xl border border-slate-200 bg-white p-5 text-sm font-medium shadow-soft">Vastaanotto säästää aikaa, kun ei tarvitse soitella</div>
-            <div class="rounded-2xl border border-slate-200 bg-white p-5 text-sm font-medium shadow-soft">Käyttö alkaa nopeasti, ilman pitkää projektia</div>
-            <div class="rounded-2xl border border-slate-200 bg-white p-5 text-sm font-medium shadow-soft">Asiakkaan ei tarvitse asentaa uutta sovellusta</div>
-          </div>
-        </div>
-      </section>
-
-      <section id="miten" class="border-b border-slate-200 bg-white">
-        <div class="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8">
-          <h2 class="text-3xl font-bold tracking-tight">Esimerkki päivästä, jolloin ei ehditä soitella</h2>
-          <div class="mt-10 space-y-4 rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-soft">
-            <div class="grid gap-4 md:grid-cols-[140px_1fr]">
-              <p class="text-sm font-semibold text-brand-700">klo 10.15</p>
-              <p>Asiakas peruu klo 13.00 ajan.</p>
-            </div>
-            <div class="h-px bg-slate-200"></div>
-            <div class="grid gap-4 md:grid-cols-[140px_1fr]">
-              <p class="text-sm font-semibold text-brand-700">klo 10.16</p>
-              <p>Vastaanotto lisää vapaan ajan eikä käytä aikaa soittokierrokseen.</p>
-            </div>
-            <div class="h-px bg-slate-200"></div>
-            <div class="grid gap-4 md:grid-cols-[140px_1fr]">
-              <p class="text-sm font-semibold text-brand-700">klo 10.20</p>
-              <p>Asiakas vastaa viestiin: "Sopii, voin tulla klo 13".</p>
-            </div>
-            <div class="h-px bg-slate-200"></div>
-            <div class="grid gap-4 md:grid-cols-[140px_1fr]">
-              <p class="text-sm font-semibold text-brand-700">klo 10.21</p>
-              <p>Aika vahvistetaan. Päivän myynnistä ei häviä 60 € slottia.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="border-b border-slate-200 bg-slate-50">
-        <div class="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8">
-          <h2 class="text-3xl font-bold tracking-tight">Demo-dashboard</h2>
-          <p class="mt-3 max-w-3xl text-slate-600">Näet heti, montako vapautunutta aikaa tuli, montako täyttyi ja paljonko euroja saatiin takaisin samalle viikolle.</p>
-          <div class="mt-10 rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-            <div class="grid gap-4 md:grid-cols-4">
-              <div class="rounded-2xl bg-brand-50 p-4">
-                <p class="text-xs text-slate-500">Vapaat ajat tänään</p>
-                <p class="mt-2 text-2xl font-bold">3</p>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="rounded-2xl border border-slate-200 p-4">
+                <p class="text-xs text-slate-500">Lähetetyt viestit</p>
+                <p class="mt-1 text-2xl font-semibold">18</p>
               </div>
-              <div class="rounded-2xl bg-slate-50 p-4">
-                <p class="text-xs text-slate-500">Viestejä lähetetty</p>
-                <p class="mt-2 text-2xl font-bold">18</p>
-              </div>
-              <div class="rounded-2xl bg-slate-50 p-4">
-                <p class="text-xs text-slate-500">Vastauksia</p>
-                <p class="mt-2 text-2xl font-bold">1</p>
-              </div>
-              <div class="rounded-2xl bg-emerald-50 p-4">
-                <p class="text-xs text-slate-500">Täytetyt ajat</p>
-                <p class="mt-2 text-2xl font-bold text-emerald-700">1</p>
-              </div>
-              <div class="rounded-2xl bg-emerald-50 p-4">
-                <p class="text-xs text-slate-500">Takaisin saatu myynti</p>
-                <p class="mt-2 text-2xl font-bold text-emerald-700">1 040 €</p>
+              <div class="rounded-2xl border border-slate-200 p-4">
+                <p class="text-xs text-slate-500">Ensimmäinen YES</p>
+                <p class="mt-1 text-2xl font-semibold">2 min</p>
               </div>
             </div>
+            <p class="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900">
+              Slotti täyttyi klo 13:27. Henkilökunta vahvisti yhdellä klikkauksella.
+            </p>
+          </div>
+        </div>
+      </section>
 
-            <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-4">
-              <h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500">Activity feed</h3>
-              <ul id="activity-feed" class="space-y-2 text-sm"></ul>
+      <section id="miten" class="border-y border-slate-200 bg-white">
+        <div class="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+          <h2 class="text-3xl font-semibold">Miten Valppaus toimii käytännössä</h2>
+          <p class="mt-3 max-w-2xl text-slate-600">Yksinkertainen työnkulku henkilökunnalle. Selkeä kokemus potilaalle.</p>
+          <div class="mt-10 grid gap-4 md:grid-cols-5">
+            <article class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">1</p>
+              <h3 class="mt-3 font-semibold">Peruutus tapahtuu</h3>
+              <p class="mt-2 text-sm text-slate-600">Tyhjä aika syntyy kalenteriin.</p>
+            </article>
+            <article class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">2</p>
+              <h3 class="mt-3 font-semibold">Avoin slotti lisätään</h3>
+              <p class="mt-2 text-sm text-slate-600">Henkilökunta valitsee palvelun, ajan ja toimipisteen.</p>
+            </article>
+            <article class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">3</p>
+              <h3 class="mt-3 font-semibold">Valppaus lähettää SMS:t</h3>
+              <p class="mt-2 text-sm text-slate-600">Vain relevantille potilasjoukolle.</p>
+            </article>
+            <article class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">4</p>
+              <h3 class="mt-3 font-semibold">Potilas vastaa YES</h3>
+              <p class="mt-2 text-sm text-slate-600">Vastaus tulee takaisin sekunneissa.</p>
+            </article>
+            <article class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">5</p>
+              <h3 class="mt-3 font-semibold">Vahvista varaus</h3>
+              <p class="mt-2 text-sm text-slate-600">Henkilökunta hyväksyy ja slotti täyttyy.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="demo" class="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+        <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h2 class="text-3xl font-semibold">Interaktiivinen tuotedemo</h2>
+            <p class="mt-2 text-slate-600">Simuloi oikea peruutustilanne ja katso miten slotti täyttyy.</p>
+          </div>
+          <button id="resetDemo" class="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:border-slate-400">Aloita alusta</button>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+            <h3 class="text-lg font-semibold">Toimisto: vapaa aika</h3>
+            <div class="mt-5 space-y-3 text-sm">
+              <label class="block">
+                <span class="mb-1 block text-slate-500">Palvelu</span>
+                <select class="w-full rounded-xl border border-slate-300 px-3 py-2" id="service">
+                  <option>Fysioterapia 45 min</option>
+                  <option>Hieronta 60 min</option>
+                  <option>Lyhytterapia 50 min</option>
+                </select>
+              </label>
+              <label class="block">
+                <span class="mb-1 block text-slate-500">Ajankohta</span>
+                <input id="time" value="Tänään 15:00" class="w-full rounded-xl border border-slate-300 px-3 py-2" />
+              </label>
+              <label class="block">
+                <span class="mb-1 block text-slate-500">Toimipiste</span>
+                <input id="location" value="Helsinki Keskusta" class="w-full rounded-xl border border-slate-300 px-3 py-2" />
+              </label>
+            </div>
+            <div class="mt-6 grid grid-cols-2 gap-3">
+              <button data-step="1" class="demo-step rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white">1. Lisää slotti</button>
+              <button data-step="2" class="demo-step rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white">2. Lähetä SMS</button>
+              <button data-step="3" class="demo-step rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white">3. Vastaanota YES</button>
+              <button data-step="4" class="demo-step rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white">4. Vahvista varaus</button>
+            </div>
+          </div>
+
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+            <div class="grid grid-cols-3 gap-3 text-sm">
+              <div class="rounded-xl bg-slate-50 p-3">
+                <p class="text-slate-500">Status</p>
+                <p id="status" class="mt-1 font-semibold">Odottaa toimintoa</p>
+              </div>
+              <div class="rounded-xl bg-slate-50 p-3">
+                <p class="text-slate-500">SMS lähetetty</p>
+                <p id="smsCount" class="mt-1 font-semibold">0</p>
+              </div>
+              <div class="rounded-xl bg-slate-50 p-3">
+                <p class="text-slate-500">YES-vastaukset</p>
+                <p id="yesCount" class="mt-1 font-semibold">0</p>
+              </div>
+            </div>
+
+            <div class="mt-5 rounded-2xl border border-slate-200">
+              <div class="border-b border-slate-200 px-4 py-3 text-sm font-semibold">Tapahtumaloki</div>
+              <ul id="log" class="space-y-2 p-4 text-sm text-slate-600">
+                <li>• Demo valmis. Klikkaa "1. Lisää slotti".</li>
+              </ul>
+            </div>
+
+            <div class="mt-5 rounded-2xl border border-brand-200 bg-brand-50 p-4 text-sm text-brand-900">
+              <p class="font-semibold">Esimerkkiviesti potilaalle</p>
+              <p class="mt-2">"Hei! Aika vapautui tänään klo <span id="smsTime">15:00</span> palveluun <span id="smsService">Fysioterapia 45 min</span>, <span id="smsLocation">Helsinki Keskusta</span>. Vastaa YES, jos haluat ajan."</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="border-b border-slate-200 bg-white">
-        <div class="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8">
-          <div class="rounded-3xl border border-brand-100 bg-brand-50 p-8 shadow-soft">
-            <h2 class="text-3xl font-bold tracking-tight">Aloita kevyesti pilotilla</h2>
-            <p class="mt-3 max-w-2xl text-slate-700">Aloittakaa yhdellä toimipisteellä. Näette nopeasti, montako peruutusaikaa täyttyi ja montako euroa tuli takaisin ilman lisäkuormaa henkilökunnalle.</p>
-            <ul class="mt-6 space-y-2 text-sm text-slate-700">
-              <li>• Käyttöönotto onnistuu nopeasti, ei raskasta IT-projektia</li>
-              <li>• Henkilöstö oppii käytön käytännössä saman päivän aikana</li>
-              <li>• Raportista näette suoraan täytetyt ajat ja takaisin saadut eurot</li>
-            </ul>
+      <section id="hyodyt" class="border-y border-slate-200 bg-white">
+        <div class="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+          <h2 class="text-3xl font-semibold">Miksi klinikat valitsevat Valppauksen</h2>
+          <div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <article class="rounded-2xl border border-slate-200 p-5 shadow-soft">
+              <h3 class="font-semibold">Täytä hukkatunnit</h3>
+              <p class="mt-2 text-sm text-slate-600">Vähennä peruutusten aiheuttamaa liikevaihdon menetystä ilman manuaalista soittelua.</p>
+            </article>
+            <article class="rounded-2xl border border-slate-200 p-5 shadow-soft">
+              <h3 class="font-semibold">Ei uutta järjestelmää</h3>
+              <p class="mt-2 text-sm text-slate-600">Valppaus ei korvaa ajanvarausta – se täydentää sitä juuri siellä missä syntyy tyhjiä aikoja.</p>
+            </article>
+            <article class="rounded-2xl border border-slate-200 p-5 shadow-soft">
+              <h3 class="font-semibold">Helppo henkilökunnalle</h3>
+              <p class="mt-2 text-sm text-slate-600">Yksi näkymä, selkeä työnkulku ja nopeat päätökset kiireiseen arkeen.</p>
+            </article>
+            <article class="rounded-2xl border border-slate-200 p-5 shadow-soft">
+              <h3 class="font-semibold">Luotettava potilaskokemus</h3>
+              <p class="mt-2 text-sm text-slate-600">Viestit tulevat tekstiviestinä. Potilaan ei tarvitse ladata sovellusta.</p>
+            </article>
           </div>
         </div>
       </section>
 
-      <section id="demo" class="bg-slate-900">
-        <div class="mx-auto flex w-full max-w-6xl flex-col items-start gap-6 px-6 py-20 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <div class="max-w-2xl">
-            <h2 class="text-3xl font-bold tracking-tight text-white">Haluatko nähdä tämän oman klinikan luvuilla?</h2>
-            <p class="mt-3 text-slate-300">Varaa 30 minuutin demo. Käydään läpi teidän peruutustilanteet ja arvioidaan, paljonko täyttyneitä aikoja voisi tulla kuukaudessa.</p>
+      <section id="hinnoittelu" class="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+        <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-soft lg:p-10">
+          <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <h2 class="text-3xl font-semibold">Selkeä hinnoittelu klinikoille</h2>
+              <p class="mt-3 max-w-2xl text-slate-600">Käyttöönotto yhdessä toimipisteessä, jatkuva tuki ja henkilöstön perehdytys sisältyvät.</p>
+            </div>
+            <p class="text-4xl font-semibold text-slate-950">alk. 149 €<span class="text-lg text-slate-500"> / kk</span></p>
           </div>
-          <a href="mailto:demo@valppaus.fi?subject=Demo%20Valppaus-palvelusta" class="rounded-full bg-white px-7 py-3 text-sm font-semibold text-slate-900 transition hover:bg-brand-100">Varaa demo</a>
+          <div class="mt-8 flex flex-wrap gap-3 text-sm text-slate-600">
+            <span class="rounded-full bg-slate-100 px-4 py-2">Fysioterapia</span>
+            <span class="rounded-full bg-slate-100 px-4 py-2">Hieronta</span>
+            <span class="rounded-full bg-slate-100 px-4 py-2">Terapiapalvelut</span>
+            <span class="rounded-full bg-slate-100 px-4 py-2">Monitoimipisteet</span>
+          </div>
+          <div class="mt-8">
+            <a href="mailto:info@valppaus.fi?subject=Demo%20ja%20hinnoittelu%20-%20Valppaus" class="inline-flex rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-brand-700">Pyydä demo ja tarjous</a>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="bg-slate-950 py-6">
-      <div class="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 text-sm text-slate-400 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-        <p>© Valppaus</p>
-        <p>Työkalu peruutusaikojen täyttämiseen fysioterapian, hieronnan ja terapiapalveluiden vastaanotoille.</p>
+    <footer class="border-t border-slate-200 bg-white">
+      <div class="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-8 text-sm text-slate-500 md:flex-row md:items-center md:justify-between lg:px-8">
+        <p>© 2026 Valppaus Oy · Työkalu peruutusaikojen täyttöön klinikoille</p>
+        <div class="flex gap-4">
+          <a href="./privacy.html" class="hover:text-slate-700">Tietosuoja</a>
+          <a href="mailto:info@valppaus.fi" class="hover:text-slate-700">info@valppaus.fi</a>
+        </div>
       </div>
     </footer>
-  </body>
-  <script>
-    const dashboardSlots = [
-      {
-        time: '10:30',
-        service: 'Fysioterapia 60 min',
-        practitioner: 'Laura Mäkinen',
-        recipients: '18 asiakasta',
-        status: 'viesti lähetetty',
-        sms: 'Hei! Vapautui fysioterapia 60 min tänään klo 10:30 (Laura Mäkinen). Vastaa KYLLÄ, jos haluat ajan.',
-        activity: ['10:02 Viesti lähetetty 18 asiakkaalle', '10:04 Asiakas vastasi KYLLÄ: anna virtanen', '10:05 Aika vahvistettu asiakkaalle anna virtanen']
-      },
-      {
-        time: '13:00',
-        service: 'Hieronta 45 min',
-        practitioner: 'Sami Lehtinen',
-        recipients: '12 asiakasta',
-        status: 'avoin',
-        sms: 'Hei! Vapautui hieronta 45 min tänään klo 13:00 (Sami Lehtinen). Vastaa KYLLÄ, jos haluat ajan.',
-        activity: ['11:40 Aika avattu listalle', '11:41 Kohderyhmä rajattu: viime 6 kk hieronta-asiakkaat', '11:42 Lähetys odottaa hyväksyntää']
-      },
-      {
-        time: '15:30',
-        service: 'Fysioterapia 60 min',
-        practitioner: 'Iida Niemi',
-        recipients: '9 asiakasta',
-        status: 'täytetty',
-        sms: 'Hei! Vapautui fysioterapia 60 min tänään klo 15:30 (Iida Niemi). Vastaa KYLLÄ, jos haluat ajan.',
-        activity: ['13:10 Viesti lähetetty 9 asiakkaalle', '13:15 Asiakas vastasi KYLLÄ: laura mäkinen', '13:16 Aika vahvistettu asiakkaalle laura mäkinen']
+
+    <script>
+      const state = { step: 0, sms: 0, yes: 0 };
+      const log = document.getElementById("log");
+      const statusEl = document.getElementById("status");
+      const smsCountEl = document.getElementById("smsCount");
+      const yesCountEl = document.getElementById("yesCount");
+      const buttons = Array.from(document.querySelectorAll(".demo-step"));
+
+      function addLog(text) {
+        const item = document.createElement("li");
+        item.textContent = `• ${text}`;
+        log.appendChild(item);
       }
-    ];
 
-    const statusStyles = {
-      avoin: 'bg-slate-100 text-slate-700',
-      'viesti lähetetty': 'bg-amber-100 text-amber-700',
-      täytetty: 'bg-emerald-100 text-emerald-700'
-    };
+      function refreshMessageTokens() {
+        document.getElementById("smsService").textContent = document.getElementById("service").value;
+        document.getElementById("smsTime").textContent = document.getElementById("time").value.replace("Tänään ", "");
+        document.getElementById("smsLocation").textContent = document.getElementById("location").value;
+      }
 
-    function renderDashboard(selectedIndex = 0) {
-      const list = document.getElementById('slot-list');
-      const feed = document.getElementById('activity-feed');
-      if (!list || !feed) return;
+      function updateUI() {
+        smsCountEl.textContent = state.sms;
+        yesCountEl.textContent = state.yes;
+      }
 
-      list.innerHTML = dashboardSlots
-        .map((slot, index) => {
-          const isSelected = index === selectedIndex;
-          return `<button class="w-full rounded-2xl border p-4 text-left transition ${isSelected ? 'border-brand-500 bg-brand-50' : 'border-slate-200 bg-white hover:border-brand-200'}" data-slot-index="${index}">
-              <div class="grid gap-3 sm:grid-cols-4 sm:items-center">
-                <p class="text-sm font-semibold text-slate-900">${slot.time}</p>
-                <p class="text-sm text-slate-700">${slot.service}</p>
-                <p class="text-sm text-slate-700">${slot.practitioner}</p>
-                <span class="inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold ${statusStyles[slot.status]}">${slot.status}</span>
-              </div>
-            </button>`;
-        })
-        .join('');
+      function runStep(step) {
+        refreshMessageTokens();
 
-      const selected = dashboardSlots[selectedIndex];
-      document.getElementById('selected-time').textContent = selected.time;
-      document.getElementById('selected-service').textContent = selected.service;
-      document.getElementById('selected-practitioner').textContent = selected.practitioner;
-      document.getElementById('selected-recipients').textContent = selected.recipients;
-      document.getElementById('selected-sms').textContent = selected.sms;
+        if (step === 1) {
+          state.step = 1;
+          statusEl.textContent = "Avoin slotti lisätty";
+          addLog(`Henkilökunta lisäsi slotin: ${document.getElementById("service").value}, ${document.getElementById("time").value}.`);
+        }
 
-      feed.innerHTML = selected.activity
-        .map((event) => `<li class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">${event}</li>`)
-        .join('');
+        if (step === 2 && state.step >= 1) {
+          state.step = 2;
+          state.sms = 22;
+          statusEl.textContent = "SMS-kampanja käynnissä";
+          addLog("Valppaus lähetti 22 tekstiviestiä valituille potilaille.");
+        }
 
-      document.querySelectorAll('[data-slot-index]').forEach((button) => {
-        button.addEventListener('click', () => renderDashboard(Number(button.dataset.slotIndex)));
+        if (step === 3 && state.step >= 2) {
+          state.step = 3;
+          state.yes = 3;
+          statusEl.textContent = "YES-vastauksia vastaanotettu";
+          addLog("Ensimmäinen YES-vastaus tuli 2 minuutissa.");
+        }
+
+        if (step === 4 && state.step >= 3) {
+          state.step = 4;
+          statusEl.textContent = "Varaus vahvistettu";
+          addLog("Henkilökunta vahvisti varauksen. Peruutusaika täytetty.");
+        }
+
+        updateUI();
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => runStep(Number(button.dataset.step)));
       });
-    }
 
-    renderDashboard();
-  </script>
+      document.getElementById("resetDemo").addEventListener("click", () => {
+        state.step = 0;
+        state.sms = 0;
+        state.yes = 0;
+        log.innerHTML = "<li>• Demo valmis. Klikkaa \"1. Lisää slotti\".</li>";
+        statusEl.textContent = "Odottaa toimintoa";
+        updateUI();
+        refreshMessageTokens();
+      });
+
+      ["service", "time", "location"].forEach((id) => {
+        document.getElementById(id).addEventListener("input", refreshMessageTokens);
+      });
+
+      refreshMessageTokens();
+      updateUI();
+    </script>
+  </body>
 </html>
