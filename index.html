@@ -56,6 +56,20 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:I
 .card{border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
 .mini{font-size:14px;color:var(--muted)}
 
+/* Dashboard demo */
+.dashboard-demo{background:#f8fbff;border:1px solid #dbeafe;border-radius:20px;padding:18px;box-shadow:var(--shadow)}
+.dashboard-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.dashboard-title{font-size:20px;font-weight:900;margin:0}
+.dashboard-pill{font-size:12px;font-weight:900;color:#1d4ed8;background:#dbeafe;padding:6px 10px;border-radius:999px}
+.dashboard-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.metric{background:#fff;border:1px solid #bfdbfe;border-radius:14px;padding:12px}
+.metric-label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+.metric-value{font-size:22px;font-weight:1000;line-height:1.1}
+.metric-note{font-size:12px;color:#334155;margin-top:6px}
+.dashboard-flow{margin-top:12px;background:#fff;border:1px dashed #93c5fd;border-radius:14px;padding:12px;font-size:14px}
+.flow-from{color:#b45309;font-weight:900}
+.flow-to{color:#15803d;font-weight:900}
+
 /* Why tiles (no CTAs inside) */
 .tiles4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px}
 .tile{border:2px solid var(--ink);border-radius:0;padding:16px;display:flex;flex-direction:column;gap:6px;min-height:140px;box-shadow:none}
@@ -99,6 +113,8 @@ a.link{color:var(--ink);font-weight:900;text-decoration:underline}
 @media (max-width:1100px){ .tiles4{grid-template-columns:1fr 1fr} }
 @media (max-width:720px){ .tiles4{grid-template-columns:1fr} }
 @media (max-width:980px){ .pricing,.faq{grid-template-columns:1fr} .plan{aspect-ratio:auto;min-height:420px} .h1{font-size:36px} }
+@media (max-width:980px){ .dashboard-grid{grid-template-columns:1fr 1fr} }
+@media (max-width:560px){ .dashboard-grid{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
@@ -128,6 +144,46 @@ a.link{color:var(--ink);font-weight:900;text-decoration:underline}
     <p class="sub">Säästätte aikaanne peruutusaikojen täyttelyissä, saatte lisämyyntiä ja asiakkaat pääsevät nopeammin hoitoon. Asiakkailla myös paremmat mahdollisuudet peruuttaa aikansa. Aloitus tunnissa.</p>
     <div class="hero-cta">
       <a class="cta" href="#cta" onclick="return openContact()">Varaa demo</a>
+    </div>
+  </section>
+
+  <section class="section container" id="dashboard-demo">
+    <h2 class="h2">Lyhyt dashboard-demo</h2>
+    <div class="dashboard-demo">
+      <div class="dashboard-header">
+        <p class="dashboard-title">Päivän tilannekuva</p>
+        <span class="dashboard-pill">Päivitetty juuri nyt</span>
+      </div>
+      <div class="dashboard-grid">
+        <div class="metric">
+          <span class="metric-label">vapaat ajat</span>
+          <div class="metric-value">13.00</div>
+          <div class="metric-note">Seuraava vapaa aika tänään</div>
+        </div>
+        <div class="metric">
+          <span class="metric-label">viestejä lähetetty</span>
+          <div class="metric-value">18</div>
+          <div class="metric-note">Tekstiviesti lähti kohderyhmälle</div>
+        </div>
+        <div class="metric">
+          <span class="metric-label">vastaukset</span>
+          <div class="metric-value">1</div>
+          <div class="metric-note">Asiakas vastasi: “KYLLÄ”</div>
+        </div>
+        <div class="metric">
+          <span class="metric-label">täytetyt ajat</span>
+          <div class="metric-value">1</div>
+          <div class="metric-note">Aika varmistui automaattisesti</div>
+        </div>
+        <div class="metric">
+          <span class="metric-label">arvioitu palautunut liikevaihto</span>
+          <div class="metric-value">145 €</div>
+          <div class="metric-note">Yhden täytetyn ajan arvo</div>
+        </div>
+      </div>
+      <div class="dashboard-flow">
+        Status: <span class="flow-from">vahvistusta odottaa</span> → <span class="flow-to">täytetty</span>
+      </div>
     </div>
   </section>
 
