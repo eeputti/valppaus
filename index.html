@@ -1,256 +1,250 @@
 <!doctype html>
 <html lang="fi">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Peruutusajat rahaksi – Valppaus</title>
-  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-  <link rel="stylesheet" href="./styles.css?v=20251217" />
-  <style id="critical">
-:root{
-  --bg:#ffffff;
-  --ink:#0F172A;
-  --muted:#475569;
-  --line:#e5e7eb;
-  --primary:#5AA0FF;
-  --primary-ink:#ffffff;
-  --shadow:0 12px 30px rgba(15,23,42,.08);
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif}
-.container{max-width:1100px;margin:0 auto;padding:0 20px}
-
-.topbar{background:var(--primary);color:#fff}
-.topbar-inner{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;font-size:14px}
-.topbar a{color:#fff;text-decoration:none;font-weight:900;border:2px solid #fff;border-radius:999px;padding:6px 10px}
-.topbar a:hover{background:#ffffff22}
-
-.header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:50}
-.header-inner{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
-.logo img{height:36px;width:auto;display:block}
-.nav{display:flex;gap:10px;align-items:center}
-.btn, .cta{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 16px;font-weight:900;text-decoration:none}
-.cta{background:var(--primary);color:var(--primary-ink);box-shadow:var(--shadow);border:0}
-.cta:hover{filter:brightness(.95)}
-.btn{border:1.5px solid var(--ink);color:var(--ink)}
-.btn:hover{background:var(--ink);color:#fff}
-
-.cta-float{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:60;display:none}
-.cta-float a{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;border-radius:999px;padding:12px 18px;font-weight:900;text-decoration:none;box-shadow:var(--shadow)}
-@media (max-width:860px){ .cta-float{display:block} .nav .cta.primary{display:none} }
-    @media (max-width: 600px){
-  .container{ padding-left:16px; padding-right:16px; }
-}
-
-/* Hero */
-.hero{padding:64px 0 28px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
-.hero::after{ content:none; }
-.badge{display:inline-block;background:#EEF5FF;color:var(--primary);font-weight:900;font-size:12px;padding:6px 10px;border-radius:999px;margin:0 0 14px}
-.h1{font-size:44px;line-height:1.04;letter-spacing:-.02em;margin:0 0 12px;font-weight:1000;max-width:900px}
-.sub{font-size:18px;color:var(--muted);max-width:820px;margin:0 0 18px}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
-
-/* Sections */
-.section{padding:32px 0;border-bottom:1px solid var(--line)}
-.h2{font-size:24px;margin:0 0 12px;font-weight:1000}
-.card{border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
-.mini{font-size:14px;color:var(--muted)}
-
-/* Why tiles (no CTAs inside) */
-.tiles4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px}
-.tile{border:2px solid var(--ink);border-radius:0;padding:16px;display:flex;flex-direction:column;gap:6px;min-height:140px;box-shadow:none}
-.tile b{font-size:16px}
-.tile p{margin:0;font-size:14px;color:var(--muted)}
-
-/* Pricing */
-.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.plan{border:2px solid var(--line);border-radius:18px;background:#fff;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);aspect-ratio:1/1;justify-content:space-between}
-.plan.highlight{border-color:var(--primary)}
-.plan .plan-top{display:flex;justify-content:space-between;align-items:center}
-.plan .tag{background:#EEF5FF;color:var(--primary);font-weight:900;font-size:12px;padding:6px 10px;border-radius:999px}
-.price{display:flex;align-items:baseline;gap:8px;margin:6px 0}
-.price .num{font-size:30px;font-weight:1000}
-.price .sub{font-size:12px;color:var(--muted)}
-.ul{margin:0 0 0 18px;padding:0;display:flex;flex-direction:column;gap:8px}
-.plan .cta-plan{margin-top:10px;display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;border:none;border-radius:12px;padding:10px 14px;font-weight:900;text-decoration:none;justify-content:center}
-.plan .cta-plan:hover{filter:brightness(.95)}
-
-/* FAQ */
-.faq{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.qa{border:1px solid var(--line);border-radius:14px;padding:14px}
-.qa b{display:block;margin-bottom:6px}
-
-/* Forms pages */
-.form{max-width:560px;margin:0 auto}
-label{font-weight:900;font-size:14px;display:block;margin-top:6px}
-input,select,button,textarea{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:12px;font-size:16px;margin:6px 0 12px}
-button.primary{background:var(--primary);color:#fff;border:none;font-weight:900;cursor:pointer}
-button.primary:hover{filter:brightness(.95)}
-.ok{color:#16a34a;font-weight:900}
-/* Consent emphasis */
-.consent-label{display:flex;align-items:flex-start;gap:8px;background:#F6F9FF;border:1px solid #dbeafe;border-radius:12px;padding:12px;margin:6px 0 12px;font-weight:900}
-.consent-label input{margin-top:2px}
-
-/* Footer */
-.footer{padding:18px 0;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
-a.link{color:var(--ink);font-weight:900;text-decoration:underline}
-
-/* Responsive */
-@media (max-width:1100px){ .tiles4{grid-template-columns:1fr 1fr} }
-@media (max-width:720px){ .tiles4{grid-template-columns:1fr} }
-@media (max-width:980px){ .pricing,.faq{grid-template-columns:1fr} .plan{aspect-ratio:auto;min-height:420px} .h1{font-size:36px} }
-</style>
-</head>
-<body>
-
-
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div><b>Asiakaspalvelu:</b> lisää asiakas peruutuslistalle tästä.</div>
-      <a href="./join.html">Lisää asiakas listalle</a>
-    </div>
-  </div>
-  <div class="header">
-    <div class="container header-inner">
-      <a href="./index.html" class="logo" aria-label="Valppaus"><img src="./logo.svg" alt="Valppaus" /></a>
-      <nav class="nav">
-        <a class="btn" href="./join.html">Lisää asiakas listalle</a>
-        <a class="cta primary" href="#cta" onclick="return openContact()">Varaa demo</a>
-      </nav>
-    </div>
-  </div>
-  <div class="cta-float"><a href="#cta" onclick="return openContact()">Varaa demo</a></div>
-
-<main>
-  <section class="hero container">
-    <div class="badge">14 vrk pilotti – 10 täyttöä tai 0 €</div>
-    <h1 class="h1">Valppaus täyttää vapaat ajat. <br/>No‑showt alas. Ei integraatioita.</h1>
-    <p class="sub">Säästätte aikaanne peruutusaikojen täyttelyissä, saatte lisämyyntiä ja asiakkaat pääsevät nopeammin hoitoon. Asiakkailla myös paremmat mahdollisuudet peruuttaa aikansa. Aloitus tunnissa.</p>
-    <div class="hero-cta">
-      <a class="cta" href="#cta" onclick="return openContact()">Varaa demo</a>
-    </div>
-  </section>
-
-<section class="section container" id="why">
-  <h2 class="h2">Näin Valppaus toimii</h2>
-  <p class="sub">Tuloksia nopeasti ilman IT-urakkaa. Valppaus muuttaa peruutukset takaisin laskutukseksi.</p>
-  <div class="tiles5">
-    <div class="tile">
-      <b>Ilman integraatioita</b>
-      <p>Käyttöönotto 1 h. <br/>Aloitetaan vaikka heti.</p>
-    </div>
-    <div class="tile">
-      <b>Nopeus</b>
-      <p>Asiakas peruuttaa aikansa viimeistään 3 h ennen → Laitamme viestit liikkeelle minuuteissa.</p>
-    </div>
-    <div class="tile">
-      <b>Varaus</b>
-      <p>Viestin saaneet vastaavat viestiin K/E-vahvistuksella ja voivat varata ajan itselleen. Nopein voittaa.</p>
-    </div>
-    <div class="tile">
-      <b>Varmistus</b>
-      <p>Ajan varannut saa 24 h, 3 h, 1 h muistutukset. Saadaan no-showt alas.</p>
-    </div>
-    <div class="tile">
-      <b>Raportointi</b>
-      <p>Julkaisut → Varaukset → Toteutuneet → Eurot. Läpinäkyvä raportti.</p>
-    </div>
-  </div>
-</section>
-
-  <section id="pricing" class="section container">
-    <h2 class="h2">Hinnasto</h2>
-    <div class="pricing">
-      <div class="plan">
-        <div class="plan-top">
-          <div class="tag">STARTER</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valppaus | Täytä peruutusajat ilman turhaa soittelua</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#eef6ff',
+                100: '#d9eafe',
+                500: '#3f7edb',
+                600: '#2f69c2',
+                700: '#2355a2'
+              }
+            },
+            boxShadow: {
+              soft: '0 12px 40px rgba(15, 23, 42, 0.08)'
+            },
+            keyframes: {
+              fadeUp: {
+                '0%': { opacity: '0', transform: 'translateY(12px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' }
+              }
+            },
+            animation: {
+              fadeUp: 'fadeUp 0.6s ease-out both'
+            }
+          }
+        }
+      };
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased">
+    <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur">
+      <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+        <div class="flex items-center gap-3">
+          <img src="./logo.svg" alt="Valppaus" class="h-8 w-auto" />
+          <span class="text-sm font-semibold tracking-wide text-slate-600">Klinikoille</span>
         </div>
-        <div>
-          <div class="price"><div class="num">199 €</div><div class="sub">/ kk</div></div>
-          <div class="mini">+ 12 € / täyttö</div>
-          <ul class="ul">
-            <li>Pilotti: 10 täyttöä / 14 vrk tai 0 €</li>
-            <li>Kuukausiraportti</li>
-            <li><b>Rajat:</b> 60 tarjousta/kk, batch 30</li>
-          </ul>
+        <a href="#demo" class="rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-600 hover:shadow-soft">Varaa demo</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="relative overflow-hidden border-b border-slate-200 bg-white">
+        <div class="absolute inset-x-0 -top-20 mx-auto h-64 w-64 rounded-full bg-brand-100 blur-3xl"></div>
+        <div class="relative mx-auto grid w-full max-w-6xl gap-12 px-6 py-20 lg:grid-cols-2 lg:items-center lg:px-8">
+          <div class="space-y-6 animate-fadeUp">
+            <span class="inline-flex rounded-full bg-brand-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-700">Peruutusajat tehokkaasti täyteen</span>
+            <h1 class="text-4xl font-bold leading-tight tracking-tight text-slate-900 md:text-5xl">Täytä peruutusajat ilman turhaa soittelua.</h1>
+            <p class="max-w-xl text-lg text-slate-600">Valppaus auttaa klinikkaa täyttämään viime hetken vapaat ajat automaattisilla tekstiviesteillä oikeille asiakkaille — nopeasti, selkeästi ja ilman asiakasäppiä.</p>
+            <div class="flex flex-wrap gap-3">
+              <a href="#demo" class="rounded-full bg-brand-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-600 hover:shadow-soft">Varaa demo</a>
+              <a href="#miten" class="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-brand-500 hover:text-brand-700">Katso miten se toimii</a>
+            </div>
+          </div>
+          <div class="animate-fadeUp rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+            <p class="mb-4 text-sm font-semibold text-slate-500">Esimerkki 30 sekunnin tilanteesta</p>
+            <ol class="space-y-3 text-sm">
+              <li class="rounded-2xl bg-slate-50 p-4"><span class="font-semibold text-brand-700">10:15</span> Asiakas peruu klo 13:00 ajan.</li>
+              <li class="rounded-2xl bg-slate-50 p-4"><span class="font-semibold text-brand-700">10:16</span> Työntekijä lisää vapaan ajan Valppaukseen.</li>
+              <li class="rounded-2xl bg-slate-50 p-4"><span class="font-semibold text-brand-700">10:17</span> Valppaus lähettää SMS-viestin sopiville asiakkaille.</li>
+              <li class="rounded-2xl bg-slate-50 p-4"><span class="font-semibold text-brand-700">10:22</span> Asiakas vastaa, klinikka vahvistaa ajan.</li>
+            </ol>
+          </div>
         </div>
-        <a class="cta-plan" href="#cta" onclick="return openContact()">Varaa demo</a>
-      </div>
+      </section>
 
-      <div class="plan highlight">
-        <div class="plan-top">
-          <div class="tag">PRO</div>
-          <div class="tag">Suosituin</div>
+      <section class="border-b border-slate-200 bg-slate-50">
+        <div class="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8">
+          <div class="max-w-3xl space-y-4">
+            <h2 class="text-3xl font-bold tracking-tight">Viime hetken peruutukset syövät liikevaihtoa.</h2>
+            <p class="text-slate-600">Kun aika peruuntuu samana päivänä, vastaanotolla ei yleensä ehditä soittaa listaa läpi. Lopputulos on tuttu: hyvä hoitoaika jää tyhjäksi, vaikka kiinnostuneita asiakkaita olisi ollut.</p>
+          </div>
+          <div class="mt-10 grid gap-4 md:grid-cols-3">
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
+              <p class="text-sm font-semibold text-slate-500">Haaste 1</p>
+              <p class="mt-2 font-semibold">Tyhjä aika = menetettyä laskutusta</p>
+            </div>
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
+              <p class="text-sm font-semibold text-slate-500">Haaste 2</p>
+              <p class="mt-2 font-semibold">Soittokierros vie aikaa asiakastyöltä</p>
+            </div>
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
+              <p class="text-sm font-semibold text-slate-500">Haaste 3</p>
+              <p class="mt-2 font-semibold">Tieto vapaasta ajasta ei tavoita oikeita asiakkaita</p>
+            </div>
+          </div>
         </div>
-        <div>
-          <div class="price"><div class="num">399 €</div><div class="sub">/ kk</div></div>
-          <div class="mini">+ 20 € / täyttö</div>
-          <ul class="ul">
-            <li>Rajaton kapasiteetti</li>
-            <li>“VALPPAUS”‑lähettäjä</li>
-            <li>Laajennetut raportit</li>
-          </ul>
+      </section>
+
+      <section class="border-b border-slate-200 bg-white">
+        <div class="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8">
+          <h2 class="text-3xl font-bold tracking-tight">Ratkaisu: 3 selkeää vaihetta</h2>
+          <div class="mt-10 grid gap-6 md:grid-cols-3">
+            <div class="group rounded-3xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-1 hover:border-brand-300">
+              <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-500 text-sm font-bold text-white">1</div>
+              <h3 class="text-lg font-semibold">Aika peruuntuu</h3>
+              <p class="mt-2 text-sm text-slate-600">Työntekijä lisää vapautuneen ajan Valppaukseen muutamassa sekunnissa.</p>
+            </div>
+            <div class="group rounded-3xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-1 hover:border-brand-300">
+              <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-500 text-sm font-bold text-white">2</div>
+              <h3 class="text-lg font-semibold">Tekstiviesti lähtee</h3>
+              <p class="mt-2 text-sm text-slate-600">Valppaus lähettää viestin niille asiakkaille, joille aika oikeasti sopii.</p>
+            </div>
+            <div class="group rounded-3xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-1 hover:border-brand-300">
+              <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-500 text-sm font-bold text-white">3</div>
+              <h3 class="text-lg font-semibold">Asiakas ottaa ajan</h3>
+              <p class="mt-2 text-sm text-slate-600">Kiinnostunut asiakas vastaa viestiin ja klinikka vahvistaa ajan.</p>
+            </div>
+          </div>
         </div>
-        <a class="cta-plan" href="#cta" onclick="return openContact()">Varaa demo</a>
-      </div>
+      </section>
 
-      <div class="plan">
-        <div class="plan-top">
-          <div class="tag">PAY‑PER‑FILL</div>
+      <section class="border-b border-slate-200 bg-slate-50">
+        <div class="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8">
+          <h2 class="text-3xl font-bold tracking-tight">Miksi Valppaus?</h2>
+          <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            <div class="rounded-2xl border border-slate-200 bg-white p-5 text-sm font-medium shadow-soft">Vähemmän tyhjiä aikoja</div>
+            <div class="rounded-2xl border border-slate-200 bg-white p-5 text-sm font-medium shadow-soft">Enemmän liikevaihtoa</div>
+            <div class="rounded-2xl border border-slate-200 bg-white p-5 text-sm font-medium shadow-soft">Vähemmän manuaalista työtä</div>
+            <div class="rounded-2xl border border-slate-200 bg-white p-5 text-sm font-medium shadow-soft">Helppo käyttöönotto</div>
+            <div class="rounded-2xl border border-slate-200 bg-white p-5 text-sm font-medium shadow-soft">Ei tarvetta asiakasäpille</div>
+          </div>
         </div>
-        <div>
-          <div class="price"><div class="num">0 €</div><div class="sub">/ kk</div></div>
-          <div class="mini">+ 30 € / täyttö - cap 699 €</div>
-          <ul class="ul">
-            <li>Ei kiinteitä kuluja – maksat vain tuloksesta</li>
-            <li>Rajattu kapasiteetti</li>
-          </ul>
+      </section>
+
+      <section id="miten" class="border-b border-slate-200 bg-white">
+        <div class="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8">
+          <h2 class="text-3xl font-bold tracking-tight">Näin se toimii käytännössä</h2>
+          <div class="mt-10 space-y-4 rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-soft">
+            <div class="grid gap-4 md:grid-cols-[140px_1fr]">
+              <p class="text-sm font-semibold text-brand-700">klo 10.15</p>
+              <p>Asiakas peruu ajan klo 13.00.</p>
+            </div>
+            <div class="h-px bg-slate-200"></div>
+            <div class="grid gap-4 md:grid-cols-[140px_1fr]">
+              <p class="text-sm font-semibold text-brand-700">klo 10.16</p>
+              <p>Valppaus lähettää tekstiviestin valitulle asiakasryhmälle.</p>
+            </div>
+            <div class="h-px bg-slate-200"></div>
+            <div class="grid gap-4 md:grid-cols-[140px_1fr]">
+              <p class="text-sm font-semibold text-brand-700">klo 10.20</p>
+              <p>Asiakas vastaa viestiin: “Sopii, voin tulla klo 13”.</p>
+            </div>
+            <div class="h-px bg-slate-200"></div>
+            <div class="grid gap-4 md:grid-cols-[140px_1fr]">
+              <p class="text-sm font-semibold text-brand-700">klo 10.21</p>
+              <p>Klinikka vahvistaa ajan yhdellä klikkauksella.</p>
+            </div>
+          </div>
         </div>
-        <a class="cta-plan" href="#cta" onclick="return openContact()">Varaa demo</a>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <section class="section container" id="cta">
-    <h2 class="h2">Varaa 15 min demo</h2>
-    <div class="card">
-      <p class="mini">Lähetä viesti – palaamme 24 h sisällä.</p>
-      <div class="hero-cta">
-        <a class="cta" href="#" onclick="return openContact()">Avaa sähköposti</a>
-        <a class="btn" href="tel:+358000000000">Soita</a>
-      </div>
-    </div>
-  </section>
+      <section class="border-b border-slate-200 bg-slate-50">
+        <div class="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8">
+          <h2 class="text-3xl font-bold tracking-tight">Demo-dashboard</h2>
+          <p class="mt-3 max-w-3xl text-slate-600">Selkeä näkymä kertoo yhdellä silmäyksellä, mitä vapaille ajoille tapahtuu ja kuinka paljon liikevaihtoa on palautettu.</p>
+          <div class="mt-10 rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+            <div class="grid gap-4 md:grid-cols-5">
+              <div class="rounded-2xl bg-brand-50 p-4">
+                <p class="text-xs text-slate-500">Vapaat ajat</p>
+                <p class="mt-2 text-2xl font-bold">6</p>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-xs text-slate-500">Lähetetyt viestit</p>
+                <p class="mt-2 text-2xl font-bold">42</p>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-xs text-slate-500">Vastaukset</p>
+                <p class="mt-2 text-2xl font-bold">14</p>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-xs text-slate-500">Täytetyt ajat</p>
+                <p class="mt-2 text-2xl font-bold">5</p>
+              </div>
+              <div class="rounded-2xl bg-emerald-50 p-4">
+                <p class="text-xs text-slate-500">Palautunut liikevaihto</p>
+                <p class="mt-2 text-2xl font-bold text-emerald-700">1 040 €</p>
+              </div>
+            </div>
+            <div class="mt-6 overflow-hidden rounded-2xl border border-slate-200">
+              <table class="min-w-full divide-y divide-slate-200 text-sm">
+                <thead class="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+                  <tr>
+                    <th class="px-4 py-3">Vapaa aika</th>
+                    <th class="px-4 py-3">Kohderyhmä</th>
+                    <th class="px-4 py-3">Tilanne</th>
+                    <th class="px-4 py-3">Toimenpide</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 bg-white">
+                  <tr>
+                    <td class="px-4 py-3">Ti 13:00 / Fysioterapia</td>
+                    <td class="px-4 py-3">Selkäkipuasiakkaat 10 km</td>
+                    <td class="px-4 py-3"><span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">2 vastausta</span></td>
+                    <td class="px-4 py-3"><button class="rounded-full bg-brand-500 px-4 py-1.5 text-xs font-semibold text-white">Vahvista</button></td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3">Ke 09:30 / Hieronta</td>
+                    <td class="px-4 py-3">Aiemmin käyneet asiakkaat</td>
+                    <td class="px-4 py-3"><span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">Täytetty</span></td>
+                    <td class="px-4 py-3 text-slate-400">—</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <section class="section container">
-    <h2 class="h2">Usein kysyttyä</h2>
-    <div class="faq">
-      <div class="qa">
-        <b>Tarvitaanko integraatioita?</b>
-        <div class="mini">Ei tosiaan! Käyttöönotto tapahtuu tunnissa ja tarvittavat integraatiot hoidetaan myöhemmin.</div>
-      </div>
-      <div class="qa">
-        <b>Entä suostumus & tietosuoja?</b>
-        <div class="mini">Kysymme luvan asiakkaalta. Viestit koskevat vain vapautuneita aikoja. <a class="link" href="./privacy.html">Lue lisää</a>.</div>
-      </div>
-      <div class="qa">
-        <b>Mitä jos kukaan ei vastaa?</b>
-        <div class="mini">Lähetämme viestit laajemmalle. Pilotti: 10 täyttöä / 14 vrk tai 0 €.</div>
-      </div>
-      <div class="qa">
-        <b>Voiko irtisanoa koska vain?</b>
-        <div class="mini">Kyllä. Päätämme sopimuksen irtisanomiskuukauden lopussa.</div>
-      </div>
-    </div>
-  </section>
-</main>
+      <section class="border-b border-slate-200 bg-white">
+        <div class="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8">
+          <div class="rounded-3xl border border-brand-100 bg-brand-50 p-8 shadow-soft">
+            <h2 class="text-3xl font-bold tracking-tight">Kokeile pilotilla</h2>
+            <p class="mt-3 max-w-2xl text-slate-700">Aloita kevyesti yhdellä toimipisteellä ja yhdellä palvelulla. Pilotin aikana näet käytännössä, kuinka nopeasti peruutusaikoja saadaan täytettyä ilman ylimääräistä manuaalista työtä.</p>
+            <ul class="mt-6 space-y-2 text-sm text-slate-700">
+              <li>• Matala aloituskynnys ja nopea käyttöönotto</li>
+              <li>• Selkeä tuki henkilöstölle alusta asti</li>
+              <li>• Konkreettinen data täytetyistä ajoista</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-  <footer class="footer container">
-    <div>© Valppaus • <a class="link" href="./privacy.html">GDPR</a> • <a class="link" href="./stop.html">Poistu listalta</a></div>
-    <div><a class="btn" href="#cta" onclick="return openContact()">Varaa demo</a></div>
-  </footer>
+      <section id="demo" class="bg-slate-900">
+        <div class="mx-auto flex w-full max-w-6xl flex-col items-start gap-6 px-6 py-20 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+          <div class="max-w-2xl">
+            <h2 class="text-3xl font-bold tracking-tight text-white">Haluatko nähdä, miten Valppaus toimii juuri teidän klinikalla?</h2>
+            <p class="mt-3 text-slate-300">Varaa 30 minuutin demo. Näytämme, miten täytätte peruutusajat nopeasti tekstiviesteillä — ilman turhaa soittelua.</p>
+          </div>
+          <a href="mailto:demo@valppaus.fi?subject=Demo%20Valppaus-palvelusta" class="rounded-full bg-white px-7 py-3 text-sm font-semibold text-slate-900 transition hover:bg-brand-100">Varaa demo</a>
+        </div>
+      </section>
+    </main>
 
-
-<script src="./main.js?v=20251217"></script>
-</body>
+    <footer class="bg-slate-950 py-6">
+      <div class="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 text-sm text-slate-400 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+        <p>© Valppaus</p>
+        <p>Työkalu peruutusaikojen täyttämiseen fysioterapian, hieronnan ja terapiapalveluiden vastaanotoille.</p>
+      </div>
+    </footer>
+  </body>
 </html>
