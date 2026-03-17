@@ -1,47 +1,234 @@
 <!doctype html>
 <html lang="fi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Valppaus | Täytä peruutusajat ilman turhaa soittelua</title>
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              brand: {
-                50: '#eef6ff',
-                100: '#d9eafe',
-                500: '#3f7edb',
-                600: '#2f69c2',
-                700: '#2355a2'
-              }
-            },
-            boxShadow: {
-              soft: '0 12px 40px rgba(15, 23, 42, 0.08)'
-            },
-            keyframes: {
-              fadeUp: {
-                '0%': { opacity: '0', transform: 'translateY(12px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' }
-              }
-            },
-            animation: {
-              fadeUp: 'fadeUp 0.6s ease-out both'
-            }
-          }
-        }
-      };
-    </script>
-  </head>
-  <body class="bg-slate-50 text-slate-900 antialiased">
-    <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur">
-      <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
-        <div class="flex items-center gap-3">
-          <img src="./logo.svg" alt="Valppaus" class="h-8 w-auto" />
-          <span class="text-sm font-semibold tracking-wide text-slate-600">Klinikoille</span>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Peruutusajat rahaksi – Valppaus</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="stylesheet" href="./styles.css?v=20251217" />
+  <style id="critical">
+:root{
+  --bg:#ffffff;
+  --ink:#0F172A;
+  --muted:#475569;
+  --line:#e5e7eb;
+  --primary:#5AA0FF;
+  --primary-ink:#ffffff;
+  --shadow:0 12px 30px rgba(15,23,42,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+.topbar{background:var(--primary);color:#fff}
+.topbar-inner{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;font-size:14px}
+.topbar a{color:#fff;text-decoration:none;font-weight:900;border:2px solid #fff;border-radius:999px;padding:6px 10px}
+.topbar a:hover{background:#ffffff22}
+
+.header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:50}
+.header-inner{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+.logo img{height:36px;width:auto;display:block}
+.nav{display:flex;gap:10px;align-items:center}
+.btn, .cta{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 16px;font-weight:900;text-decoration:none}
+.cta{background:var(--primary);color:var(--primary-ink);box-shadow:var(--shadow);border:0}
+.cta:hover{filter:brightness(.95)}
+.btn{border:1.5px solid var(--ink);color:var(--ink)}
+.btn:hover{background:var(--ink);color:#fff}
+
+.cta-float{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:60;display:none}
+.cta-float a{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;border-radius:999px;padding:12px 18px;font-weight:900;text-decoration:none;box-shadow:var(--shadow)}
+@media (max-width:860px){ .cta-float{display:block} .nav .cta.primary{display:none} }
+    @media (max-width: 600px){
+  .container{ padding-left:16px; padding-right:16px; }
+}
+
+/* Hero */
+.hero{padding:64px 0 28px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero::after{ content:none; }
+.badge{display:inline-block;background:#EEF5FF;color:var(--primary);font-weight:900;font-size:12px;padding:6px 10px;border-radius:999px;margin:0 0 14px}
+.h1{font-size:44px;line-height:1.04;letter-spacing:-.02em;margin:0 0 12px;font-weight:1000;max-width:900px}
+.sub{font-size:18px;color:var(--muted);max-width:820px;margin:0 0 18px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+
+/* Sections */
+.section{padding:32px 0;border-bottom:1px solid var(--line)}
+.h2{font-size:24px;margin:0 0 12px;font-weight:1000}
+.card{border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+.mini{font-size:14px;color:var(--muted)}
+
+/* Dashboard demo */
+.dashboard-demo{background:#f8fbff;border:1px solid #dbeafe;border-radius:20px;padding:18px;box-shadow:var(--shadow)}
+.dashboard-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.dashboard-title{font-size:20px;font-weight:900;margin:0}
+.dashboard-pill{font-size:12px;font-weight:900;color:#1d4ed8;background:#dbeafe;padding:6px 10px;border-radius:999px}
+.dashboard-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.metric{background:#fff;border:1px solid #bfdbfe;border-radius:14px;padding:12px}
+.metric-label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+.metric-value{font-size:22px;font-weight:1000;line-height:1.1}
+.metric-note{font-size:12px;color:#334155;margin-top:6px}
+.dashboard-flow{margin-top:12px;background:#fff;border:1px dashed #93c5fd;border-radius:14px;padding:12px;font-size:14px}
+.flow-from{color:#b45309;font-weight:900}
+.flow-to{color:#15803d;font-weight:900}
+
+/* Why tiles (no CTAs inside) */
+.tiles4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px}
+.tile{border:2px solid var(--ink);border-radius:0;padding:16px;display:flex;flex-direction:column;gap:6px;min-height:140px;box-shadow:none}
+.tile b{font-size:16px}
+.tile p{margin:0;font-size:14px;color:var(--muted)}
+
+/* Pricing */
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan{border:2px solid var(--line);border-radius:18px;background:#fff;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);aspect-ratio:1/1;justify-content:space-between}
+.plan.highlight{border-color:var(--primary)}
+.plan .plan-top{display:flex;justify-content:space-between;align-items:center}
+.plan .tag{background:#EEF5FF;color:var(--primary);font-weight:900;font-size:12px;padding:6px 10px;border-radius:999px}
+.price{display:flex;align-items:baseline;gap:8px;margin:6px 0}
+.price .num{font-size:30px;font-weight:1000}
+.price .sub{font-size:12px;color:var(--muted)}
+.ul{margin:0 0 0 18px;padding:0;display:flex;flex-direction:column;gap:8px}
+.plan .cta-plan{margin-top:10px;display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;border:none;border-radius:12px;padding:10px 14px;font-weight:900;text-decoration:none;justify-content:center}
+.plan .cta-plan:hover{filter:brightness(.95)}
+
+/* FAQ */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.qa{border:1px solid var(--line);border-radius:14px;padding:14px}
+.qa b{display:block;margin-bottom:6px}
+
+/* Forms pages */
+.form{max-width:560px;margin:0 auto}
+label{font-weight:900;font-size:14px;display:block;margin-top:6px}
+input,select,button,textarea{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:12px;font-size:16px;margin:6px 0 12px}
+button.primary{background:var(--primary);color:#fff;border:none;font-weight:900;cursor:pointer}
+button.primary:hover{filter:brightness(.95)}
+.ok{color:#16a34a;font-weight:900}
+/* Consent emphasis */
+.consent-label{display:flex;align-items:flex-start;gap:8px;background:#F6F9FF;border:1px solid #dbeafe;border-radius:12px;padding:12px;margin:6px 0 12px;font-weight:900}
+.consent-label input{margin-top:2px}
+
+/* Footer */
+.footer{padding:18px 0;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+a.link{color:var(--ink);font-weight:900;text-decoration:underline}
+
+/* Responsive */
+@media (max-width:1100px){ .tiles4{grid-template-columns:1fr 1fr} }
+@media (max-width:720px){ .tiles4{grid-template-columns:1fr} }
+@media (max-width:980px){ .pricing,.faq{grid-template-columns:1fr} .plan{aspect-ratio:auto;min-height:420px} .h1{font-size:36px} }
+@media (max-width:980px){ .dashboard-grid{grid-template-columns:1fr 1fr} }
+@media (max-width:560px){ .dashboard-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div><b>Asiakaspalvelu:</b> lisää asiakas peruutuslistalle tästä.</div>
+      <a href="./join.html">Lisää asiakas listalle</a>
+    </div>
+  </div>
+  <div class="header">
+    <div class="container header-inner">
+      <a href="./index.html" class="logo" aria-label="Valppaus"><img src="./logo.svg" alt="Valppaus" /></a>
+      <nav class="nav">
+        <a class="btn" href="./join.html">Lisää asiakas listalle</a>
+        <a class="cta primary" href="#cta" onclick="return openContact()">Varaa demo</a>
+      </nav>
+    </div>
+  </div>
+  <div class="cta-float"><a href="#cta" onclick="return openContact()">Varaa demo</a></div>
+
+<main>
+  <section class="hero container">
+    <div class="badge">14 vrk pilotti – 10 täyttöä tai 0 €</div>
+    <h1 class="h1">Valppaus täyttää vapaat ajat. <br/>No‑showt alas. Ei integraatioita.</h1>
+    <p class="sub">Säästätte aikaanne peruutusaikojen täyttelyissä, saatte lisämyyntiä ja asiakkaat pääsevät nopeammin hoitoon. Asiakkailla myös paremmat mahdollisuudet peruuttaa aikansa. Aloitus tunnissa.</p>
+    <div class="hero-cta">
+      <a class="cta" href="#cta" onclick="return openContact()">Varaa demo</a>
+    </div>
+  </section>
+
+  <section class="section container" id="dashboard-demo">
+    <h2 class="h2">Lyhyt dashboard-demo</h2>
+    <div class="dashboard-demo">
+      <div class="dashboard-header">
+        <p class="dashboard-title">Päivän tilannekuva</p>
+        <span class="dashboard-pill">Päivitetty juuri nyt</span>
+      </div>
+      <div class="dashboard-grid">
+        <div class="metric">
+          <span class="metric-label">vapaat ajat</span>
+          <div class="metric-value">13.00</div>
+          <div class="metric-note">Seuraava vapaa aika tänään</div>
+        </div>
+        <div class="metric">
+          <span class="metric-label">viestejä lähetetty</span>
+          <div class="metric-value">18</div>
+          <div class="metric-note">Tekstiviesti lähti kohderyhmälle</div>
+        </div>
+        <div class="metric">
+          <span class="metric-label">vastaukset</span>
+          <div class="metric-value">1</div>
+          <div class="metric-note">Asiakas vastasi: “KYLLÄ”</div>
+        </div>
+        <div class="metric">
+          <span class="metric-label">täytetyt ajat</span>
+          <div class="metric-value">1</div>
+          <div class="metric-note">Aika varmistui automaattisesti</div>
+        </div>
+        <div class="metric">
+          <span class="metric-label">arvioitu palautunut liikevaihto</span>
+          <div class="metric-value">145 €</div>
+          <div class="metric-note">Yhden täytetyn ajan arvo</div>
+        </div>
+      </div>
+      <div class="dashboard-flow">
+        Status: <span class="flow-from">vahvistusta odottaa</span> → <span class="flow-to">täytetty</span>
+      </div>
+    </div>
+  </section>
+
+<section class="section container" id="why">
+  <h2 class="h2">Näin Valppaus toimii</h2>
+  <p class="sub">Tuloksia nopeasti ilman IT-urakkaa. Valppaus muuttaa peruutukset takaisin laskutukseksi.</p>
+  <div class="tiles5">
+    <div class="tile">
+      <b>Ilman integraatioita</b>
+      <p>Käyttöönotto 1 h. <br/>Aloitetaan vaikka heti.</p>
+    </div>
+    <div class="tile">
+      <b>Nopeus</b>
+      <p>Asiakas peruuttaa aikansa viimeistään 3 h ennen → Laitamme viestit liikkeelle minuuteissa.</p>
+    </div>
+    <div class="tile">
+      <b>Varaus</b>
+      <p>Viestin saaneet vastaavat viestiin K/E-vahvistuksella ja voivat varata ajan itselleen. Nopein voittaa.</p>
+    </div>
+    <div class="tile">
+      <b>Varmistus</b>
+      <p>Ajan varannut saa 24 h, 3 h, 1 h muistutukset. Saadaan no-showt alas.</p>
+    </div>
+    <div class="tile">
+      <b>Raportointi</b>
+      <p>Julkaisut → Varaukset → Toteutuneet → Eurot. Läpinäkyvä raportti.</p>
+    </div>
+  </div>
+</section>
+
+  <section id="pricing" class="section container">
+    <h2 class="h2">Hinnasto</h2>
+    <div class="pricing">
+      <div class="plan">
+        <div class="plan-top">
+          <div class="tag">STARTER</div>
+        </div>
+        <div>
+          <div class="price"><div class="num">199 €</div><div class="sub">/ kk</div></div>
+          <div class="mini">+ 12 € / täyttö</div>
+          <ul class="ul">
+            <li>Pilotti: 10 täyttöä / 14 vrk tai 0 €</li>
+            <li>Kuukausiraportti</li>
+            <li><b>Rajat:</b> 60 tarjousta/kk, batch 30</li>
+          </ul>
         </div>
         <a href="#demo" class="rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-600 hover:shadow-soft">Varaa demo</a>
       </div>
